@@ -1,12 +1,4 @@
-package entities;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
-import lombok.NoArgsConstructor;
+package com.example.bookstore.entities;
 
 //@Entity
 //@Table(name = "book_user")

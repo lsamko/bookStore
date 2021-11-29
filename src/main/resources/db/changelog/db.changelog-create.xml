@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="1_0_0_001" author="liudmyla">
+        <createTable tableName="book">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints
+                    primaryKey="true" primaryKeyName="pk_task" validatePrimaryKey="true"/>
+            </column>
+            <column name="priority" type="int">
+                <constraints
+                    nullable="false" notNullConstraintName="nn_task_priority" validateNullable="true"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints
+                    unique="true" uniqueConstraintName="uk_task_name" validateUnique="true"
+                    nullable="false" notNullConstraintName="nn_task_name" validateNullable="true"/>
+            </column>
+            <column name="task_id" type="varchar(255)">
+                <constraints
+                    nullable="false" notNullConstraintName="nn_task_id" validateNullable="true"/>
+            </column>
+            <column name="date" type="datetime"/>
+            <column name="done" type="TINYINT(1)" defaultValue="0"/>
+            <column name="user_id" type="varchar(255)"/>
+            <column name="cron" type="varchar(30)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1_0_0_002" author="liudmyla">
+        <createTable tableName="user">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints
+                    primaryKey="true" primaryKeyName="pk_user" validatePrimaryKey="true"/>
+            </column>
+            <column name="first_name" type="varchar(255)">
+                <constraints
+                    unique="true" uniqueConstraintName="uk_user_first_name" validateUnique="true"
+                    nullable="false" notNullConstraintName="nn_user_first_name" validateNullable="true"/>
+            </column>
+            <column name="last_name" type="varchar(255)">
+                <constraints
+                    unique="true" uniqueConstraintName="uk_user_last_name" validateUnique="true"
+                    nullable="false" notNullConstraintName="nn_user_last_name" validateNullable="true"/>
+            </column>
+            <column name="user_id" type="varchar(255)">
+                <constraints
+                    nullable="false" notNullConstraintName="nn_user_id" validateNullable="true"/>
+            </column>
+            <column name="notification" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1_0_0_003" author="liudmyla">
+        <createTable tableName="user_tasks">
+            <column name="user_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_user_id" references="user(id)"/>
+            </column>
+            <column name="tasks_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_tasks_id" references="task(id)"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="user_id, tasks_id"
+            constraintName="PK_USER_TASKS_ID"
+            tableName="user_tasks"
+            validate="true"/>
+    </changeSet>
+
+</databaseChangeLog>

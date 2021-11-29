@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="insert-test-data" author="liudmyla">
+        <insert tableName="task">
+            <column name="id" value="1001"/>
+            <column name="priority" value="1"/>
+            <column name="name"  value="do_workout"/>
+            <column name="task_id" value="001"/>
+            <column name="date" value="2021-07-12T06:30:00"/>
+            <column name="done" value="1"/>
+            <column name="user_id" value="004"/>
+            <column name="cron" value="0 * * ? * *"/>
+
+        </insert>
+
+        <insert tableName="task">
+            <column name="id" value="1002"/>
+            <column name="priority" value="3"/>
+            <column name="name"  value="learn_spring"/>
+            <column name="task_id" value="002"/>
+            <column name="date" value="2021-07-12T06:30:00"/>
+            <column name="done" value="0"/>
+            <column name="user_id" value=""/>
+            <column name="cron" value="0 */2 * ? * *"/>
+        </insert>
+
+        <insert tableName="task">
+            <column name="id" value="1003"/>
+            <column name="priority" value="1"/>
+            <column name="name"  value="wake_up"/>
+            <column name="task_id" value="003"/>
+            <column name="date" value="2021-07-12T06:30:00"/>
+            <column name="done" value="1"/>
+            <column name="cron" value="0 0 12 ? * SUN"/>
+
+        </insert>
+
+        <insert tableName="task">
+            <column name="id" value="1004"/>
+            <column name="priority" value="5"/>
+            <column name="name"  value="go_to_bed"/>
+            <column name="task_id" value="004"/>
+            <column name="date" value="2021-07-12T06:30:00"/>
+            <column name="done" value="0"/>
+            <column name="user_id" value=""/>
+            <column name="cron" value="0 0 1 * * ?"/>
+        </insert>
+
+        <insert tableName="task">
+            <column name="id" value="1005"/>
+            <column name="priority" value="3"/>
+            <column name="name"  value="eat_your_lunch"/>
+            <column name="task_id" value="005"/>
+            <column name="date" value="2021-07-12T06:30:00"/>
+            <column name="done" value="1"/>
+            <column name="user_id" value=""/>
+            <column name="cron" value="0 0 12 ? * TUE"/>
+        </insert>
+
+        <insert tableName="task">
+            <column name="id" value="1006"/>
+            <column name="priority" value="4"/>
+            <column name="name"  value="meet_with_friends"/>
+            <column name="task_id" value="006"/>
+            <column name="date" value="2021-07-12T06:30:00"/>
+            <column name="done" value="0"/>
+            <column name="user_id" value=""/>
+            <column name="cron" value="0 0 */6 ? * *"/>
+        </insert>
+
+        <insert tableName="user">
+            <column name="id" value="1001"/>
+            <column name="first_name" value="Tony"/>
+            <column name="last_name"  value="Stark"/>
+            <column name="user_id" value="001"/>
+            <column name="notification" value="Email"/>
+        </insert>
+
+        <insert tableName="user">
+            <column name="id" value="1002"/>
+            <column name="first_name" value="Peggy"/>
+            <column name="last_name"  value="Carter"/>
+            <column name="user_id" value="004"/>
+            <column name="notification" value="Message"/>
+        </insert>
+
+        <insert tableName="user_tasks">
+            <column name="user_id" value="1002"/>
+            <column name="tasks_id" value="1001"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
